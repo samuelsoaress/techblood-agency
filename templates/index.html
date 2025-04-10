@@ -22,9 +22,9 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Inter:400%7CSyne:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic%7CDM+Sans:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic%7CInter:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&amp;display=swap"
         media="all">
-    <script data-optimized="1" src="./js/plugins/litespeed-cache/assets/webfontloader.js"></script>
+    <script data-optimized="1" src="{{ url_for('static', filename='js/plugins/litespeed-cache/assets/webfontloader.js') }}"></script>
     <link rel="stylesheet" data-asynced="1" data-optimized="2" as="style"
-        onload="this.onload=null;this.rel='stylesheet'" href="./css/plugins/litespeed/css/index.css">
+        onload="this.onload=null;this.rel='stylesheet'" href="{{ url_for('static', filename='css/plugins/litespeed/css/index.css') }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TECHBLOOD - Agência de Marketing</title>
@@ -34,15 +34,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-    <script src="./js/plugins/dethemekit-for-elementor/assets/js/jquery-1.12.4-wp.js" id="jquery-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/assets/js/jquery-1.12.4-wp.js') }}" id="jquery-js"></script>
 
-    <script src="./js/plugins/wp-content/plugins/wp-social/assets/js/front-main.js?ver=3.0.9"
+    <script src="{{ url_for('static', filename='js/plugins/wp-content/plugins/wp-social/assets/js/front-main.js?ver=3.0.9') }}"
         id="xs_front_main_js-js"></script>
-    <script src="./js/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js?ver=3.25.9"
+    <script src="{{ url_for('static', filename='js/plugins/elementor/assets/lib/font-awesome/js/v4-shims.min.js?ver=3.25.9') }}"
         id="font-awesome-4-shim-js"></script>
-    <script src="./js/plugins/wp-social/assets/js/social-front.js?ver=6.7.1" id="xs_social_custom-js"></script>
-    <script src="./js/plugins/titan-preloader/inc/assets/js/gsap.min.js?ver=3.11.3" id="gsap-js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/assets/js/de_loop/ecs.js?ver=2.1.8" id="ecs-script-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/wp-social/assets/js/social-front.js?ver=6.7.1') }}" id="xs_social_custom-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/titan-preloader/inc/assets/js/gsap.min.js?ver=3.11.3') }}" id="gsap-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/assets/js/de_loop/ecs.js?ver=2.1.8') }}" id="ecs-script-js"></script>
 
     <style>
         /* Botão flutuante */
@@ -126,413 +126,8 @@
         }
     </style>
 
-    <style>
-        .chat-column {
-            display: flex;
-            flex-direction: column;
-            height: 90%;
-            padding: 0.9375rem 0 0.625rem 0;
-            margin: auto;
-            text-align: left;
-            max-width: 25rem;
-            min-width: 9.375rem;
-        }
 
-        .user-typing {
-            flex: 0;
-            border: none;
-            color: #8d25e8;
-            margin: 0.75rem;
-            font-size: 15;
-            font-family: Helvetica Neue for IBM, Helvetica Neue, Helvetica, Arial, sans-serif;
-        }
-
-        #scrollingChat {
-            margin: 0.75rem;
-            overflow-y: auto;
-            overflow-x: hidden;
-            flex: 1;
-        }
-
-        .message-inner {
-            opacity: 0;
-            margin-top: 0.9375rem;
-            -webkit-transition-property: opacity, margin-top;
-            -webkit-transition-duration: 0.75s;
-            -webkit-transition-timing-function: ease-in;
-            -moz-transition-property: opacity, margin-top;
-            -moz-transition-duration: 0.75s;
-            -moz-transition-timing-function: ease-in;
-            -o-transition-property: opacity, margin-top;
-            -o-transition-duration: 0.75s;
-            -o-transition-timing-function: ease-in;
-            -ms-transition-property: opacity, margin-top;
-            -ms-transition-duration: 0.75s;
-            -ms-transition-timing-function: ease-in;
-            transition-property: opacity, margin-top;
-            transition-duration: 0.75s;
-            transition-timing-function: ease-in;
-        }
-
-        .load .message-inner {
-            opacity: 1;
-            margin-top: 0.3125rem;
-        }
-
-        .from-user {
-            text-align: right;
-        }
-
-        .from-user .message-inner {
-            position: relative;
-            font-size: 1rem;
-            color: #fff;
-            letter-spacing: 0.015rem;
-            line-height: 1.3125rem;
-            background: #00B4A0;
-            border-radius: 1.25rem;
-            border-bottom-right-radius: 0;
-            text-align: left;
-            display: inline-block;
-            margin-left: 2.5rem;
-            min-width: 2.5rem;
-        }
-
-        .from-user .message-inner p {
-            margin: 0.3125rem;
-            padding: 0 0.9375rem;
-        }
-
-        .from-user .message-inner:before,
-        .from-user .message-inner:after {
-            content: "";
-            position: absolute;
-        }
-
-
-        .from-user .message-inner:before {
-            z-index: -2;
-            bottom: -0.375rem;
-            right: 0;
-            height: 0.375rem;
-            width: 0.5rem;
-            background: #1cb3a0;
-        }
-
-        .from-user .message-inner:after {
-            z-index: -1;
-            bottom: -0.5rem;
-            right: 0;
-            height: 0.5rem;
-            width: 0.5rem;
-            background: #fff;
-            border-top-right-radius: 1.25rem;
-        }
-
-        .from-watson,
-        .message-inner {
-            position: relative;
-            border-radius: 1.5625rem;
-            font-size: 1rem;
-            color: #B5B5B5;
-            letter-spacing: 0.015rem;
-            line-height: 1.3125rem;
-        }
-
-        .from-watson.latest .message-inner {
-            color: #323232;
-        }
-
-        .from-watson p {
-            margin: 0.3125rem;
-            padding: 0 1.25rem;
-        }
-
-        .from-watson.latest.top p:before {
-            content: ".";
-            color: #9855D4;
-            background-image: url("../img/marker_image.png");
-            background-size: 0.3125rem 1.3125rem;
-            position: absolute;
-            z-index: 2;
-            left: 0.4375rem;
-            width: 0.3125rem;
-            height: 1.3125rem;
-            line-height: 1.3125rem;
-        }
-
-        #textInput {
-            border: none;
-            outline: none;
-            background: transparent;
-            font-size: 1rem;
-            color: #323232;
-            letter-spacing: 0.015rem;
-            line-height: 1.3125rem;
-            height: 2.5rem;
-            max-width: 100%;
-            padding-left: 0.125rem;
-            margin-bottom: -0.125rem;
-            font-family: Helvetica Neue for IBM, Helvetica Neue, Helvetica, Arial, sans-serif;
-
-        }
-
-        #textInput.underline {
-            border-bottom: 2px solid #00B4A0;
-        }
-
-        ::-webkit-input-placeholder {
-            color: #B5B5B5;
-        }
-
-        ::-moz-placeholder {
-            color: #B5B5B5;
-            opacity: 1;
-        }
-
-        input:-moz-placeholder {
-            color: #B5B5B5;
-            opacity: 1;
-        }
-
-        :-ms-input-placeholder {
-            color: #B5B5B5;
-        }
-
-        ::-ms-clear {
-            display: none;
-        }
-
-        .inputOutline {
-            display: block;
-            border-bottom: 0.0625rem solid #aeaeae;
-            margin-left: 0.5rem;
-            margin-right: 0.5rem;
-        }
-
-        #textInputDummy {
-            position: absolute;
-            white-space: pre;
-            top: 0;
-            left: -1000%;
-            opacity: 0;
-        }
-
-        #payload-column {
-            font-family: Monaco, monospace;
-            font-size: 0.75rem;
-            letter-spacing: 0;
-            line-height: 1.125rem;
-            background-color: #23292A;
-            color: #fff;
-            overflow-x: auto;
-
-            width: 45%;
-            max-width: 32.0625rem;
-            min-width: 29.6875rem;
-        }
-
-        #payload-column.full {
-            width: 100%;
-            max-width: none;
-            min-width: initial;
-        }
-
-        #payload-column .header-text,
-        #payload-column #payload-initial-message {
-            font-family: Helvetica Neue for IBM, Helvetica Neue, Helvetica, Arial, sans-serif;
-            font-size: 1.125rem;
-            color: #9E9E9E;
-            letter-spacing: 0.01875rem;
-            padding: 0.5rem;
-            padding-left: 2.5rem;
-            background: #383D3E;
-        }
-
-        .hide {
-            display: none;
-        }
-
-        .payload .line-numbers,
-        .payload .payload-text {
-            padding: 0.5rem;
-        }
-
-        .line-numbers {
-            width: 2rem;
-            color: #898989;
-            text-align: right;
-        }
-
-        pre {
-            margin: 0;
-            word-wrap: normal;
-        }
-
-        .string {
-            color: #54EED0;
-        }
-
-        .boolean,
-        .null,
-        .number {
-            color: #CE8EFF;
-        }
-
-        .key {
-            color: #66B7FF;
-        }
-
-        html {
-            font-size: 16px;
-        }
-
-        @media only screen and (max-width: 1000px) {
-            html {
-                font-size: 15px;
-            }
-        }
-
-        @media only screen and (max-width: 600px) {
-            html {
-                font-size: 14px;
-            }
-
-            .chat-column {
-                padding-top: 4rem;
-            }
-
-            #payload-column {
-                width: 0;
-                max-width: none;
-                min-width: initial;
-            }
-        }
-
-        /* IBM Design fonts https://github.ibm.com/Design/fonts */
-        @font-face {
-            font-family: 'Helvetica Neue for IBM';
-            src: url('../fonts/light/h-n-light.eot?') format('eot'),
-                url('../fonts/light/h-n-light.woff2') format('woff2'),
-                url('../fonts/light/h-n-light.woff') format('woff'),
-                url('../fonts/light/h-n-light.ttf') format('truetype');
-            font-weight: 300;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Helvetica Neue for IBM';
-            src: url('../fonts/light-italic/h-n-light-italic.eot?') format('eot'),
-                url('../fonts/light-italic/h-n-light-italic.woff2') format('woff2'),
-                url('../fonts/light-italic/h-n-light-italic.woff') format('woff'),
-                url('../fonts/light-italic/h-n-light-italic.ttf') format('truetype');
-            font-weight: 300;
-            font-style: italic;
-        }
-
-        @font-face {
-            font-family: 'Helvetica Neue for IBM';
-            src: url('../fonts/roman/h-n-roman.eot?') format('eot'),
-                url('../fonts/roman/h-n-roman.woff2') format('woff2'),
-                url('../fonts/roman/h-n-roman.woff') format('woff'),
-                url('../fonts/roman/h-n-roman.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Helvetica Neue for IBM';
-            src: url('../fonts/roman-italic/h-n-roman-italic.eot?') format('eot'),
-                url('../fonts/roman-italic/h-n-roman-italic.woff2') format('woff2'),
-                url('../fonts/roman-italic/h-n-roman-italic.woff') format('woff'),
-                url('../fonts/roman-italic/h-n-roman-italic.ttf') format('truetype');
-            font-weight: 400;
-            font-style: italic;
-        }
-
-        @font-face {
-            font-family: 'Helvetica Neue for IBM';
-            src: url('../fonts/medium/h-n-medium.eot?') format('eot'),
-                url('../fonts/medium/h-n-medium.woff2') format('woff2'),
-                url('../fonts/medium/h-n-medium.woff') format('woff'),
-                url('../fonts/medium/h-n-medium.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Helvetica Neue for IBM';
-            src: url('../fonts/medium-italic/h-n-medium-italic.eot?') format('eot'),
-                url('../fonts/medium-italic/h-n-medium-italic.woff2') format('woff2'),
-                url('../fonts/medium-italic/h-n-medium-italic.woff') format('woff'),
-                url('../fonts/medium-italic/h-n-medium-italic.ttf') format('truetype');
-            font-weight: 500;
-            font-style: italic;
-        }
-
-        @font-face {
-            font-family: 'Helvetica Neue for IBM';
-            src: url('../fonts/bold/h-n-bold.eot?') format('eot'),
-                url('../fonts/bold/h-n-bold.woff2') format('woff2'),
-                url('../fonts/bold/h-n-bold.woff') format('woff'),
-                url('../fonts/bold/h-n-bold.ttf') format('truetype');
-            font-weight: 700;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Helvetica Neue for IBM';
-            src: url('../fonts/bold-italic/h-n-bold-italic.eot?') format('eot'),
-                url('../fonts/bold-italic/h-n-bold-italic.woff2') format('woff2'),
-                url('../fonts/bold-italic/h-n-bold-italic.woff') format('woff'),
-                url('../fonts/bold-italic/h-n-bold-italic.ttf') format('truetype');
-            font-weight: 700;
-            font-style: italic;
-        }
-
-        /* IBM Icons */
-        @font-face {
-            font-family: 'ibm-icons';
-            src: url('../fonts/ibm-icons.eot?ytcz1z') format('eot'),
-                url('../fonts/ibm-icons.eot?ytcz1z#iefix') format('embedded-opentype'),
-                url('../fonts/ibm-icons.ttf?ytcz1z') format('truetype'),
-                url('../fonts/ibm-icons.woff?ytcz1z') format('woff'),
-                url('../fonts/ibm-icons.svg?ytcz1z#ibm-icons') format('svg');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        /* IBM glyphs */
-        @font-face {
-            font-family: 'ibm-glyph';
-            src: url('../fonts/ibm-glyphs.eot?1b8643') format('eot'),
-                url('../fonts/ibm-glyphs.eot?1b8643#iefix') format('embedded-opentype'),
-                url('../fonts/ibm-glyphs.ttf?1b8643') format('truetype'),
-                url('../fonts/ibm-glyphs.woff?1b8643') format('woff'),
-                url('../fonts/ibm-glyphs.svg?1b8643#ibm-glyph') format('svg');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        .options-list {
-            color: #8d25e8;
-            cursor: pointer;
-        }
-
-        .options-button {
-            color: white;
-            background-color: #8d25e8;
-            border-radius: 6px;
-            padding-bottom: 4px;
-            padding-top: 4px;
-            padding-left: 6px;
-            padding-right: 6px;
-            margin: 3px;
-            cursor: pointer;
-            display: inline-block;
-        }
-    </style>
-    <script type="text/javascript" src="./js/ajax/libs/select2/3.5.2/select2.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/ajax/libs/select2/3.5.2/select2.min.js') }}"></script>
 
     <link rel="prefetch" href="http://127.0.0.1:5500/fale-conosco/">
 
@@ -742,19 +337,19 @@
                                                                         class="elementskit-nav-logo" href="#"
                                                                         target="_self" rel=""> <img width="2482"
                                                                             height="361"
-                                                                            data-src="#/wp-content/uploads/2023/02/Ativo-2-2.png.webp"
+                                                                            data-src="{{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2.png.webp') }}"
                                                                             class="attachment-full size-full lazyload"
                                                                             alt="" decoding="async"
-                                                                            data-srcset="#/wp-content/uploads/2023/02/Ativo-2-2.png.webp 2482w, #/wp-content/uploads/2023/02/Ativo-2-2-300x44.png.webp 300w, #/wp-content/uploads/2023/02/Ativo-2-2-1024x149.png.webp 1024w, #/wp-content/uploads/2023/02/Ativo-2-2-768x112.png.webp 768w, #/wp-content/uploads/2023/02/Ativo-2-2-1536x223.png.webp 1536w, #/wp-content/uploads/2023/02/Ativo-2-2-2048x298.png.webp 2048w"
+                                                                            data-srcset="{{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2.png.webp') }} 2482w , {{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2-300x44.png.webp') }} 300w , {{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2-1024x149.png.webp') }} 1024w , {{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2-768x112.png.webp') }} 768w , {{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2-1536x223.png.webp') }} 1536w , {{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2-2048x298.png.webp') }} 2048w"
                                                                             data-sizes="(max-width: 2482px) 100vw, 2482px"
                                                                             title=" TechBlood"
                                                                             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                                                             style="--smush-placeholder-width: 2482px; --smush-placeholder-aspect-ratio: 2482/361;"><noscript><img
                                                                                 width="2482" height="361"
-                                                                                src="#/wp-content/uploads/2023/02/Ativo-2-2.png.webp"
+                                                                                src="{{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2.png.webp') }}"
                                                                                 class="attachment-full size-full" alt=""
                                                                                 decoding="async"
-                                                                                srcset="#/wp-content/uploads/2023/02/Ativo-2-2.png.webp 2482w, #/wp-content/uploads/2023/02/Ativo-2-2-300x44.png.webp 300w, #/wp-content/uploads/2023/02/Ativo-2-2-1024x149.png.webp 1024w, #/wp-content/uploads/2023/02/Ativo-2-2-768x112.png.webp 768w, #/wp-content/uploads/2023/02/Ativo-2-2-1536x223.png.webp 1536w, #/wp-content/uploads/2023/02/Ativo-2-2-2048x298.png.webp 2048w"
+                                                                                srcset="{{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2.png.webp') }} 2482w , {{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2-300x44.png.webp') }} 300w , {{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2-1024x149.png.webp') }} 1024w , {{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2-768x112.png.webp') }} 768w , {{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2-1536x223.png.webp') }} 1536w , {{ url_for('static', filename='/wp-content/uploads/2023/02/Ativo-2-2-2048x298.png.webp') }} 2048w"
                                                                                 sizes="(max-width: 2482px) 100vw, 2482px"
                                                                                 title=" TechBlood" /></noscript>
                                                                     </a></div><button
@@ -811,17 +406,17 @@
                             data-settings="{&quot;_transform_scale_effect&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0.8,&quot;sizes&quot;:[]},&quot;ekit_we_effect_on&quot;:&quot;none&quot;,&quot;_transform_scale_effect_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
                             data-widget_type="image.default">
                             <div class="elementor-widget-container"> <img decoding="async" width="800" height="300"
-                                    data-src="#/wp-content/uploads/2024/11/nvb.png"
+                                    data-src="{{ url_for('static', filename='/wp-content/uploads/2024/11/nvb.png') }}"
                                     class="attachment-large size-large wp-image-5562 lazyload" alt="november black "
-                                    data-srcset="#/wp-content/uploads/2024/11/nvb.png 815w, #/wp-content/uploads/2024/11/nvb-300x113.png 300w, #/wp-content/uploads/2024/11/nvb-768x288.png 768w"
+                                    data-srcset="{{ url_for('static', filename='/wp-content/uploads/2024/11/nvb.png') }} 815w , {{ url_for('static', filename='#/wp-content/uploads/2024/11/nvb-300x113.png') }} 300w , {{ url_for('static', filename='#/wp-content/uploads/2024/11/nvb-768x288.png') }} 768w"
                                     data-sizes="(max-width: 800px) 100vw, 800px"
                                     title="november black  TechBlood TechBlood"
                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                     style="--smush-placeholder-width: 800px; --smush-placeholder-aspect-ratio: 800/300;"><noscript><img
                                         decoding="async" width="800" height="300"
-                                        src="#/wp-content/uploads/2024/11/nvb.png"
+                                        src="{{ url_for('static', filename='#/wp-content/uploads/2024/11/nvb.png') }}"
                                         class="attachment-large size-large wp-image-5562" alt="november black "
-                                        srcset="#/wp-content/uploads/2024/11/nvb.png 815w, #/wp-content/uploads/2024/11/nvb-300x113.png 300w, #/wp-content/uploads/2024/11/nvb-768x288.png 768w"
+                                        srcset="{{ url_for('static', filename='#/wp-content/uploads/2024/11/nvb.png') }} 815w , {{ url_for('static', filename='#/wp-content/uploads/2024/11/nvb-300x113.png') }} 300w , {{ url_for('static', filename='#/wp-content/uploads/2024/11/nvb-768x288.png') }} 768w"
                                         sizes="(max-width: 800px) 100vw, 800px"
                                         title="november black  TechBlood TechBlood" /></noscript></div>
                         </div>
@@ -1081,10 +676,10 @@
                             data-widget_type="image.default">
                             <div class="elementor-widget-container">
                                 <noscript><img loading="lazy" decoding="async" width="639" height="1024"
-                                        src="#/wp-content/uploads/2023/09/-assessoria-de-marketing-639x1024.png.webp"
+                                        src="{{ url_for('static', filename='#/wp-content/uploads/2023/09/-assessoria-de-marketing-639x1024.png.webp') }}"
                                         class="attachment-large size-large wp-image-2589"
                                         alt="agencia de marketing digital gestão de anuncios"
-                                        srcset="#/wp-content/uploads/2023/09/-assessoria-de-marketing-639x1024.png.webp 639w, #/wp-content/uploads/2023/09/-assessoria-de-marketing-187x300.png.webp 187w, #/wp-content/uploads/2023/09/-assessoria-de-marketing-768x1230.png.webp 768w, #/wp-content/uploads/2023/09/-assessoria-de-marketing.png.webp 801w"
+                                        srcset="{{ url_for('static', filename='#/wp-content/uploads/2023/09/-assessoria-de-marketing-639x1024.png.webp') }} 639w , {{ url_for('static', filename='#/wp-content/uploads/2023/09/-assessoria-de-marketing-187x300.png.webp') }} 187w , {{ url_for('static', filename='#/wp-content/uploads/2023/09/-assessoria-de-marketing-768x1230.png.webp') }} 768w , {{ url_for('static', filename='#/wp-content/uploads/2023/09/-assessoria-de-marketing.png.webp') }} 801w"
                                         sizes="(max-width: 639px) 100vw, 639px"
                                         title=" assessoria de marketing TechBlood TechBlood" /></noscript>
                             </div>
@@ -1158,12 +753,12 @@
                                             style="width: 215.25px; margin-right: 75px;">
                                             <figure class="swiper-slide-inner"><img decoding="async"
                                                     class="swiper-slide-image lazyloaded"
-                                                    data-src="wp-content/uploads/2023/08/climagem--300x76.webp"
+                                                    data-src="{{ url_for('static', filename='wp-content/uploads/2023/08/climagem--300x76.webp') }}"
                                                     alt="climagem maraba "
-                                                    src="wp-content/uploads/2023/08/climagem--300x76.webp"
+                                                    src="{{ url_for('static', filename='wp-content/uploads/2023/08/climagem--300x76.webp') }}"
                                                     style="--smush-placeholder-width: 300px; --smush-placeholder-aspect-ratio: 300/76;"><noscript><img
                                                         decoding="async" class="swiper-slide-image"
-                                                        src="wp-content/uploads/2023/08/climagem--300x76.webp"
+                                                        src="{{ url_for('static', filename='wp-content/uploads/2023/08/climagem--300x76.webp') }}"
                                                         alt="climagem maraba " /></noscript></figure>
                                         </div>
                                         <div class="swiper-slide swiper-slide-next" role="group"
@@ -1171,12 +766,12 @@
                                             style="width: 215.25px; margin-right: 75px;">
                                             <figure class="swiper-slide-inner"><img decoding="async"
                                                     class="swiper-slide-image ls-is-cached lazyloaded"
-                                                    data-src="wp-content/uploads/2023/08/hospital--300x76.webp"
+                                                    data-src="{{ url_for('static', filename='wp-content/uploads/2023/08/hospital--300x76.webp') }}"
                                                     alt=" marketing maraba"
-                                                    src="wp-content/uploads/2023/08/hospital--300x76.webp"
+                                                    src="{{ url_for('static', filename='wp-content/uploads/2023/08/hospital--300x76.webp') }}"
                                                     style="--smush-placeholder-width: 300px; --smush-placeholder-aspect-ratio: 300/76;"><noscript><img
                                                         decoding="async" class="swiper-slide-image"
-                                                        src="wp-content/uploads/2023/08/hospital--300x76.webp"
+                                                        src="{{ url_for('static', filename='wp-content/uploads/2023/08/hospital--300x76.webp') }}"
                                                         alt=" marketing maraba" /></noscript></figure>
                                         </div>
                                         <div class="swiper-slide" role="group" aria-roledescription="slide"
@@ -1184,12 +779,12 @@
                                             style="width: 215.25px; margin-right: 75px;">
                                             <figure class="swiper-slide-inner"><img decoding="async"
                                                     class="swiper-slide-image ls-is-cached lazyloaded"
-                                                    data-src="wp-content/uploads/2023/02/invest-solar-300x40.png.webp"
+                                                    data-src="{{ url_for('static', filename='wp-content/uploads/2023/02/invest-solar-300x40.png.webp') }}"
                                                     alt="invest solar"
-                                                    src="wp-content/uploads/2023/02/invest-solar-300x40.png.webp"
+                                                    src="{{ url_for('static', filename='wp-content/uploads/2023/02/invest-solar-300x40.png.webp') }}"
                                                     style="--smush-placeholder-width: 300px; --smush-placeholder-aspect-ratio: 300/40;"><noscript><img
                                                         decoding="async" class="swiper-slide-image"
-                                                        src="wp-content/uploads/2023/02/invest-solar-300x40.png.webp"
+                                                        src="{{ url_for('static', filename='wp-content/uploads/2023/02/invest-solar-300x40.png.webp') }}"
                                                         alt="invest solar" /></noscript></figure>
                                         </div>
                                         <div class="swiper-slide" role="group" aria-roledescription="slide"
@@ -1197,12 +792,12 @@
                                             style="width: 215.25px; margin-right: 75px;">
                                             <figure class="swiper-slide-inner"><img decoding="async"
                                                     class="swiper-slide-image ls-is-cached lazyloaded"
-                                                    data-src="wp-content/uploads/2023/02/unopar_logo-copiar-300x300.png.webp"
+                                                    data-src="{{ url_for('static', filename='wp-content/uploads/2023/02/unopar_logo-copiar-300x300.png.webp') }}"
                                                     alt="unopar_logo copiar"
-                                                    src="wp-content/uploads/2023/02/unopar_logo-copiar-300x300.png.webp"
+                                                    src="{{ url_for('static', filename='wp-content/uploads/2023/02/unopar_logo-copiar-300x300.png.webp') }}"
                                                     style="--smush-placeholder-width: 300px; --smush-placeholder-aspect-ratio: 300/300;"><noscript><img
                                                         decoding="async" class="swiper-slide-image"
-                                                        src="wp-content/uploads/2023/02/unopar_logo-copiar-300x300.png.webp"
+                                                        src="{{ url_for('static', filename='wp-content/uploads/2023/02/unopar_logo-copiar-300x300.png.webp') }}"
                                                         alt="unopar_logo copiar" /></noscript></figure>
                                         </div>
                                         <div class="swiper-slide" role="group" aria-roledescription="slide"
@@ -1210,12 +805,12 @@
                                             style="width: 215.25px; margin-right: 75px;">
                                             <figure class="swiper-slide-inner"><img decoding="async"
                                                     class="swiper-slide-image ls-is-cached lazyloaded"
-                                                    data-src="wp-content/uploads/2023/02/stronghands-300x68.png.webp"
+                                                    data-src="{{ url_for('static', filename='wp-content/uploads/2023/02/stronghands-300x68.png.webp') }}"
                                                     alt="stronghands"
-                                                    src="wp-content/uploads/2023/02/stronghands-300x68.png.webp"
+                                                    src="{{ url_for('static', filename='wp-content/uploads/2023/02/stronghands-300x68.png.webp') }}"
                                                     style="--smush-placeholder-width: 300px; --smush-placeholder-aspect-ratio: 300/68;"><noscript><img
                                                         decoding="async" class="swiper-slide-image"
-                                                        src="wp-content/uploads/2023/02/stronghands-300x68.png.webp"
+                                                        src="{{ url_for('static', filename='wp-content/uploads/2023/02/stronghands-300x68.png.webp') }}"
                                                         alt="stronghands" /></noscript></figure>
                                         </div>
                                         <div class="swiper-slide" role="group" aria-roledescription="slide"
@@ -1223,12 +818,12 @@
                                             style="width: 215.25px; margin-right: 75px;">
                                             <figure class="swiper-slide-inner"><img decoding="async"
                                                     class="swiper-slide-image ls-is-cached lazyloaded"
-                                                    data-src="/wp-content/uploads/2023/02/prince-300x54.png.webp"
+                                                    data-src="{{ url_for('static', filename='/wp-content/uploads/2023/02/prince-300x54.png.webp') }}"
                                                     alt="prince"
-                                                    src="/wp-content/uploads/2023/02/prince-300x54.png.webp"
+                                                    src="{{ url_for('static', filename='/wp-content/uploads/2023/02/prince-300x54.png.webp') }}"
                                                     style="--smush-placeholder-width: 300px; --smush-placeholder-aspect-ratio: 300/54;"><noscript><img
                                                         decoding="async" class="swiper-slide-image"
-                                                        src="/wp-content/uploads/2023/02/prince-300x54.png.webp"
+                                                        src="{{ url_for('static', filename='/wp-content/uploads/2023/02/prince-300x54.png.webp') }}"
                                                         alt="prince" /></noscript></figure>
                                         </div>
                                         <div class="swiper-slide" role="group" aria-roledescription="slide"
@@ -1236,12 +831,12 @@
                                             inert="" style="width: 215.25px; margin-right: 75px;">
                                             <figure class="swiper-slide-inner"><img decoding="async"
                                                     class="swiper-slide-image ls-is-cached lazyloaded"
-                                                    data-src="wp-content/uploads/2023/02/aeasspa-300x78.png.webp"
+                                                    data-src="{{ url_for('static', filename='wp-content/uploads/2023/02/aeasspa-300x78.png.webp') }}"
                                                     alt="aeasspa"
-                                                    src="wp-content/uploads/2023/02/aeasspa-300x78.png.webp"
+                                                    src="{{ url_for('static', filename='wp-content/uploads/2023/02/aeasspa-300x78.png.webp') }}"
                                                     style="--smush-placeholder-width: 300px; --smush-placeholder-aspect-ratio: 300/78;"><noscript><img
                                                         decoding="async" class="swiper-slide-image"
-                                                        src="wp-content/uploads/2023/02/aeasspa-300x78.png.webp"
+                                                        src="{{ url_for('static', filename='wp-content/uploads/2023/02/aeasspa-300x78.png.webp') }}"
                                                         alt="aeasspa" /></noscript></figure>
                                         </div>
                                         <div class="swiper-slide" role="group" aria-roledescription="slide"
@@ -1249,12 +844,12 @@
                                             inert="" style="width: 215.25px; margin-right: 75px;">
                                             <figure class="swiper-slide-inner"><img decoding="async"
                                                     class="swiper-slide-image lazyload"
-                                                    data-src="/wp-content/uploads/2023/02/babyworld-300x122.png.webp"
+                                                    data-src="{{ url_for('static', filename='/wp-content/uploads/2023/02/babyworld-300x122.png.webp') }}"
                                                     alt="babyworld"
                                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                                                     style="--smush-placeholder-width: 300px; --smush-placeholder-aspect-ratio: 300/122;"><noscript><img
                                                         decoding="async" class="swiper-slide-image"
-                                                        src="/wp-content/uploads/2023/02/babyworld-300x122.png.webp"
+                                                        src="{{ url_for('static', filename='/wp-content/uploads/2023/02/babyworld-300x122.png.webp') }}"
                                                         alt="babyworld" /></noscript></figure>
                                         </div>
 
@@ -1282,9 +877,9 @@
                             data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_transform_scale_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1.05,&quot;sizes&quot;:[]},&quot;ekit_we_effect_on&quot;:&quot;none&quot;,&quot;_transform_scale_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
                             data-widget_type="image.default">
                             <div class="elementor-widget-container"> <noscript><img loading="lazy" decoding="async"
-                                        width="647" height="647" src="/wp-content/uploads/2024/07/site-1-2.png"
+                                        width="647" height="647" src="{{ url_for('static', filename='/wp-content/uploads/2024/07/site-1-2.png') }}"
                                         class="attachment-large size-large wp-image-5294" alt=""
-                                        srcset="/wp-content/uploads/2024/07/site-1-2.png 647w, /wp-content/uploads/2024/07/site-1-2-300x300.png 300w, /wp-content/uploads/2024/07/site-1-2-150x150.png 150w"
+                                        srcset="{{ url_for('static', filename='/wp-content/uploads/2024/07/site-1-2.png') }} 647w , {{ url_for('static', filename='/wp-content/uploads/2024/07/site-1-2-300x300.png') }} 300w , {{ url_for('static', filename='/wp-content/uploads/2024/07/site-1-2-150x150.png') }} 150w"
                                         sizes="(max-width: 647px) 100vw, 647px"
                                         title="site 1 TechBlood TechBlood" /></noscript></div>
                         </div>
@@ -1477,18 +1072,18 @@
                                             data-widget_type="image.default">
                                             <div class="elementor-widget-container"> <img loading="lazy"
                                                     decoding="async" width="800" height="800"
-                                                    data-src="./img/icons_1.png"
+                                                    data-src="{{ url_for('static', filename='img/icons_1.png') }}"
                                                     class="attachment-large size-large wp-image-246 lazyloaded" alt=""
-                                                    data-srcset="/img/icons_1.png 1000w, ./img/icons_1-300x300.png 300w, ./img/icons_1-150x150.png 150w, ./img/icons_1-768x768.png 768w"
+                                                    data-srcset="{{ url_for('static', filename='/img/icons_1.png') }} 1000w , {{ url_for('static', filename='img/icons_1-300x300.png') }} 300w , {{ url_for('static', filename='img/icons_1-150x150.png') }} 150w , {{ url_for('static', filename='img/icons_1-768x768.png') }} 768w"
                                                     data-sizes="(max-width: 800px) 100vw, 800px"
-                                                    title="icons1png TechBlood TechBlood" src="./img/icons_1.png"
+                                                    title="icons1png TechBlood TechBlood" src="{{ url_for('static', filename='img/icons_1.png') }}"
                                                     style="--smush-placeholder-width: 800px; --smush-placeholder-aspect-ratio: 800/800;"
                                                     sizes="(max-width: 800px) 100vw, 800px"
-                                                    srcset="./img/icons_1.png 1000w, ./img/icons_1-300x300.png 300w, ./img/icons_1-150x150.png 150w, ./img/icons_1-768x768.png 768w"><noscript><img
+                                                    srcset="{{ url_for('static', filename='img/icons_1.png') }} 1000w , {{ url_for('static', filename='img/icons_1-300x300.png') }} 300w , {{ url_for('static', filename='img/icons_1-150x150.png') }} 150w , {{ url_for('static', filename='img/icons_1-768x768.png') }} 768w"><noscript><img
                                                         loading="lazy" decoding="async" width="800" height="800"
-                                                        src="./img/icons_1.png"
+                                                        src="{{ url_for('static', filename='img/icons_1.png') }}"
                                                         class="attachment-large size-large wp-image-246" alt=""
-                                                        srcset="./img/icons_1.png 1000w, ./img/icons_1-300x300.png 300w, ./img/icons_1-150x150.png 150w, ./img/icons_1-768x768.png 768w"
+                                                        srcset="{{ url_for('static', filename='img/icons_1.png') }} 1000w , {{ url_for('static', filename='img/icons_1-300x300.png') }} 300w , {{ url_for('static', filename='img/icons_1-150x150.png') }} 150w , {{ url_for('static', filename='img/icons_1-768x768.png') }} 768w"
                                                         sizes="(max-width: 800px) 100vw, 800px"
                                                         title="icons1png TechBlood TechBlood" /></noscript></div>
                                         </div>
@@ -1563,18 +1158,18 @@
                                             data-widget_type="image.default">
                                             <div class="elementor-widget-container"> <img loading="lazy"
                                                     decoding="async" width="800" height="800"
-                                                    data-src="./img/icons_2.png.webp"
+                                                    data-src="{{ url_for('static', filename='img/icons_2.png.webp') }}"
                                                     class="attachment-large size-large wp-image-284 lazyloaded" alt=""
-                                                    data-srcset="./img/icons_2.png.webp 1000w, ./img/icons_2-300x300.png.webp 300w, ./img/icons_2-150x150.png.webp 150w, ./img/icons_2-768x768.png.webp 768w"
+                                                    data-srcset="{{ url_for('static', filename='img/icons_2.png.webp') }} 1000w , {{ url_for('static', filename='img/icons_2-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_2-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_2-768x768.png.webp') }} 768w"
                                                     data-sizes="(max-width: 800px) 100vw, 800px"
-                                                    title="icons2png TechBlood TechBlood" src="./img/icons_2.png.webp"
+                                                    title="icons2png TechBlood TechBlood" src="{{ url_for('static', filename='img/icons_2.png.webp') }}"
                                                     style="--smush-placeholder-width: 800px; --smush-placeholder-aspect-ratio: 800/800;"
                                                     sizes="(max-width: 800px) 100vw, 800px"
-                                                    srcset="./img/icons_2.png.webp 1000w, ./img/icons_2-300x300.png.webp 300w, ./img/icons_2-150x150.png.webp 150w, ./img/icons_2-768x768.png.webp 768w"><noscript><img
+                                                    srcset="{{ url_for('static', filename='img/icons_2.png.webp') }} 1000w , {{ url_for('static', filename='img/icons_2-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_2-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_2-768x768.png.webp') }} 768w"><noscript><img
                                                         loading="lazy" decoding="async" width="800" height="800"
-                                                        src="./img/icons_2.png.webp"
+                                                        src="{{ url_for('static', filename='img/icons_2.png.webp') }}"
                                                         class="attachment-large size-large wp-image-284" alt=""
-                                                        srcset="./img/icons_2.png.webp 1000w, ./img/icons_2-300x300.png.webp 300w, ./img/icons_2-150x150.png.webp 150w, ./img/icons_2-768x768.png.webp 768w"
+                                                        srcset="{{ url_for('static', filename='img/icons_2.png.webp') }} 1000w , {{ url_for('static', filename='img/icons_2-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_2-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_2-768x768.png.webp') }} 768w"
                                                         sizes="(max-width: 800px) 100vw, 800px"
                                                         title="icons2png TechBlood TechBlood" /></noscript></div>
                                         </div>
@@ -1654,18 +1249,18 @@
                                             data-widget_type="image.default">
                                             <div class="elementor-widget-container"> <img loading="lazy"
                                                     decoding="async" width="800" height="800"
-                                                    data-src="./img/icons_1.png"
+                                                    data-src="{{ url_for('static', filename='img/icons_1.png') }}"
                                                     class="attachment-large size-large wp-image-246 lazyloaded" alt=""
-                                                    data-srcset="/img/icons_1.png 1000w, ./img/icons_1-300x300.png 300w, ./img/icons_1-150x150.png 150w, ./img/icons_1-768x768.png 768w"
+                                                    data-srcset="{{ url_for('static', filename='/img/icons_1.png') }} 1000w , {{ url_for('static', filename='img/icons_1-300x300.png') }} 300w , {{ url_for('static', filename='img/icons_1-150x150.png') }} 150w , {{ url_for('static', filename='img/icons_1-768x768.png') }} 768w"
                                                     data-sizes="(max-width: 800px) 100vw, 800px"
-                                                    title="icons1png TechBlood TechBlood" src="./img/icons_1.png"
+                                                    title="icons1png TechBlood TechBlood" src="{{ url_for('static', filename='img/icons_1.png') }}"
                                                     style="--smush-placeholder-width: 800px; --smush-placeholder-aspect-ratio: 800/800;"
                                                     sizes="(max-width: 800px) 100vw, 800px"
-                                                    srcset="./img/icons_1.png 1000w, ./img/icons_1-300x300.png 300w, ./img/icons_1-150x150.png 150w, ./img/icons_1-768x768.png 768w"><noscript><img
+                                                    srcset="{{ url_for('static', filename='img/icons_1.png') }} 1000w , {{ url_for('static', filename='img/icons_1-300x300.png') }} 300w , {{ url_for('static', filename='img/icons_1-150x150.png') }} 150w , {{ url_for('static', filename='img/icons_1-768x768.png') }} 768w"><noscript><img
                                                         loading="lazy" decoding="async" width="800" height="800"
-                                                        src="./img/icons_1.png"
+                                                        src="{{ url_for('static', filename='img/icons_1.png') }}"
                                                         class="attachment-large size-large wp-image-246" alt=""
-                                                        srcset="./img/icons_1.png 1000w, ./img/icons_1-300x300.png 300w, ./img/icons_1-150x150.png 150w, ./img/icons_1-768x768.png 768w"
+                                                        srcset="{{ url_for('static', filename='img/icons_1.png') }} 1000w , {{ url_for('static', filename='img/icons_1-300x300.png') }} 300w , {{ url_for('static', filename='img/icons_1-150x150.png') }} 150w , {{ url_for('static', filename='img/icons_1-768x768.png') }} 768w"
                                                         sizes="(max-width: 800px) 100vw, 800px"
                                                         title="icons1png TechBlood TechBlood" /></noscript></div>
                                         </div>
@@ -1738,18 +1333,18 @@
                                             data-widget_type="image.default">
                                             <div class="elementor-widget-container"> <img loading="lazy"
                                                     decoding="async" width="800" height="800"
-                                                    data-src="./img/icons_2.png.webp"
+                                                    data-src="{{ url_for('static', filename='img/icons_2.png.webp') }}"
                                                     class="attachment-large size-large wp-image-284 lazyloaded" alt=""
-                                                    data-srcset="./img/icons_2.png.webp 1000w, ./img/icons_2-300x300.png.webp 300w, ./img/icons_2-150x150.png.webp 150w, ./img/icons_2-768x768.png.webp 768w"
+                                                    data-srcset="{{ url_for('static', filename='img/icons_2.png.webp') }} 1000w , {{ url_for('static', filename='img/icons_2-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_2-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_2-768x768.png.webp') }} 768w"
                                                     data-sizes="(max-width: 800px) 100vw, 800px"
-                                                    title="icons2png TechBlood TechBlood" src="./img/icons_2.png.webp"
+                                                    title="icons2png TechBlood TechBlood" src="{{ url_for('static', filename='img/icons_2.png.webp') }}"
                                                     style="--smush-placeholder-width: 800px; --smush-placeholder-aspect-ratio: 800/800;"
                                                     sizes="(max-width: 800px) 100vw, 800px"
-                                                    srcset="./img/icons_2.png.webp 1000w, ./img/icons_2-300x300.png.webp 300w, ./img/icons_2-150x150.png.webp 150w, ./img/icons_2-768x768.png.webp 768w"><noscript><img
+                                                    srcset="{{ url_for('static', filename='img/icons_2.png.webp') }} 1000w , {{ url_for('static', filename='img/icons_2-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_2-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_2-768x768.png.webp') }} 768w"><noscript><img
                                                         loading="lazy" decoding="async" width="800" height="800"
-                                                        src="./img/icons_2.png.webp"
+                                                        src="{{ url_for('static', filename='img/icons_2.png.webp') }}"
                                                         class="attachment-large size-large wp-image-284" alt=""
-                                                        srcset="./img/icons_2.png.webp 1000w, ./img/icons_2-300x300.png.webp 300w, ./img/icons_2-150x150.png.webp 150w, ./img/icons_2-768x768.png.webp 768w"
+                                                        srcset="{{ url_for('static', filename='img/icons_2.png.webp') }} 1000w , {{ url_for('static', filename='img/icons_2-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_2-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_2-768x768.png.webp') }} 768w"
                                                         sizes="(max-width: 800px) 100vw, 800px"
                                                         title="icons2png TechBlood TechBlood" /></noscript></div>
                                         </div>
@@ -1822,18 +1417,18 @@
                                             data-widget_type="image.default">
                                             <div class="elementor-widget-container"> <img loading="lazy"
                                                     decoding="async" width="800" height="800"
-                                                    data-src="./img/icons_2.png.webp"
+                                                    data-src="{{ url_for('static', filename='img/icons_2.png.webp') }}"
                                                     class="attachment-large size-large wp-image-284 lazyloaded" alt=""
-                                                    data-srcset="./img/icons_2.png.webp 1000w, ./img/icons_2-300x300.png.webp 300w, ./img/icons_2-150x150.png.webp 150w, ./img/icons_2-768x768.png.webp 768w"
+                                                    data-srcset="{{ url_for('static', filename='img/icons_2.png.webp') }} 1000w , {{ url_for('static', filename='img/icons_2-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_2-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_2-768x768.png.webp') }} 768w"
                                                     data-sizes="(max-width: 800px) 100vw, 800px"
-                                                    title="icons2png TechBlood TechBlood" src="./img/icons_2.png.webp"
+                                                    title="icons2png TechBlood TechBlood" src="{{ url_for('static', filename='img/icons_2.png.webp') }}"
                                                     style="--smush-placeholder-width: 800px; --smush-placeholder-aspect-ratio: 800/800;"
                                                     sizes="(max-width: 800px) 100vw, 800px"
-                                                    srcset="./img/icons_2.png.webp 1000w, ./img/icons_2-300x300.png.webp 300w, ./img/icons_2-150x150.png.webp 150w, ./img/icons_2-768x768.png.webp 768w"><noscript><img
+                                                    srcset="{{ url_for('static', filename='img/icons_2.png.webp') }} 1000w , {{ url_for('static', filename='img/icons_2-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_2-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_2-768x768.png.webp') }} 768w"><noscript><img
                                                         loading="lazy" decoding="async" width="800" height="800"
-                                                        src="./img/icons_2.png.webp"
+                                                        src="{{ url_for('static', filename='img/icons_2.png.webp') }}"
                                                         class="attachment-large size-large wp-image-284" alt=""
-                                                        srcset="./img/icons_2.png.webp 1000w, ./img/icons_2-300x300.png.webp 300w, ./img/icons_2-150x150.png.webp 150w, ./img/icons_2-768x768.png.webp 768w"
+                                                        srcset="{{ url_for('static', filename='img/icons_2.png.webp') }} 1000w , {{ url_for('static', filename='img/icons_2-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_2-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_2-768x768.png.webp') }} 768w"
                                                         sizes="(max-width: 800px) 100vw, 800px"
                                                         title="icons2png TechBlood TechBlood" /></noscript></div>
                                         </div>
@@ -1906,18 +1501,18 @@
                                             data-widget_type="image.default">
                                             <div class="elementor-widget-container"> <img loading="lazy"
                                                     decoding="async" width="800" height="800"
-                                                    data-src="./img/icons_2.png.webp"
+                                                    data-src="{{ url_for('static', filename='img/icons_2.png.webp') }}"
                                                     class="attachment-large size-large wp-image-284 lazyloaded" alt=""
-                                                    data-srcset="./img/icons_2.png.webp 1000w, ./img/icons_2-300x300.png.webp 300w, ./img/icons_2-150x150.png.webp 150w, ./img/icons_2-768x768.png.webp 768w"
+                                                    data-srcset="{{ url_for('static', filename='img/icons_2.png.webp') }} 1000w , {{ url_for('static', filename='img/icons_2-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_2-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_2-768x768.png.webp') }} 768w"
                                                     data-sizes="(max-width: 800px) 100vw, 800px"
-                                                    title="icons2png TechBlood TechBlood" src="./img/icons_2.png.webp"
+                                                    title="icons2png TechBlood TechBlood" src="{{ url_for('static', filename='img/icons_2.png.webp') }}"
                                                     style="--smush-placeholder-width: 800px; --smush-placeholder-aspect-ratio: 800/800;"
                                                     sizes="(max-width: 800px) 100vw, 800px"
-                                                    srcset="./img/icons_2.png.webp 1000w, ./img/icons_2-300x300.png.webp 300w, ./img/icons_2-150x150.png.webp 150w, ./img/icons_2-768x768.png.webp 768w"><noscript><img
+                                                    srcset="{{ url_for('static', filename='img/icons_2.png.webp') }} 1000w , {{ url_for('static', filename='img/icons_2-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_2-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_2-768x768.png.webp') }} 768w"><noscript><img
                                                         loading="lazy" decoding="async" width="800" height="800"
-                                                        src="./img/icons_2.png.webp"
+                                                        src="{{ url_for('static', filename='img/icons_2.png.webp') }}"
                                                         class="attachment-large size-large wp-image-284" alt=""
-                                                        srcset="./img/icons_2.png.webp 1000w, ./img/icons_2-300x300.png.webp 300w, ./img/icons_2-150x150.png.webp 150w, ./img/icons_2-768x768.png.webp 768w"
+                                                        srcset="{{ url_for('static', filename='img/icons_2.png.webp') }} 1000w , {{ url_for('static', filename='img/icons_2-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_2-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_2-768x768.png.webp') }} 768w"
                                                         sizes="(max-width: 800px) 100vw, 800px"
                                                         title="icons2png TechBlood TechBlood" /></noscript></div>
                                         </div>
@@ -2182,20 +1777,20 @@
                                                 <div class="elementor-image-box-wrapper">
                                                     <figure class="elementor-image-box-img"><img loading="lazy"
                                                             decoding="async" width="1000" height="1000"
-                                                            data-src="./img/icons_10.webp"
+                                                            data-src="{{ url_for('static', filename='img/icons_10.webp') }}"
                                                             class="attachment-full size-full wp-image-277 lazyloaded"
                                                             alt=""
-                                                            data-srcset="./img/icons_10.webp 1000w, ./img/icons_10-300x300.png.webp 300w, ./img/icons_10-150x150.png.webp 150w, ./img/icons_10-768x768.png.webp 768w"
+                                                            data-srcset="{{ url_for('static', filename='img/icons_10.webp') }} 1000w , {{ url_for('static', filename='img/icons_10-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_10-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_10-768x768.png.webp') }} 768w"
                                                             data-sizes="(max-width: 1000px) 100vw, 1000px"
                                                             title="icons10png TechBlood TechBlood"
-                                                            src="./img/icons_10.webp"
+                                                            src="{{ url_for('static', filename='img/icons_10.webp') }}"
                                                             style="--smush-placeholder-width: 1000px; --smush-placeholder-aspect-ratio: 1000/1000;"
                                                             sizes="(max-width: 1000px) 100vw, 1000px"
-                                                            srcset="./img/icons_10.webp 1000w, ./img/icons_10-300x300.png.webp 300w, ./img/icons_10-150x150.png.webp 150w, ./img/icons_10-768x768.png.webp 768w"><noscript><img
+                                                            srcset="{{ url_for('static', filename='img/icons_10.webp') }} 1000w , {{ url_for('static', filename='img/icons_10-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_10-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_10-768x768.png.webp') }} 768w"><noscript><img
                                                                 loading="lazy" decoding="async" width="1000"
-                                                                height="1000" src="./img/icons_10.webp"
+                                                                height="1000" src="{{ url_for('static', filename='img/icons_10.webp') }}"
                                                                 class="attachment-full size-full wp-image-277" alt=""
-                                                                srcset="./img/icons_10.webp 1000w, ./img/icons_10-300x300.png.webp 300w, ./img/icons_10-150x150.png.webp 150w, ./img/icons_10-768x768.png.webp 768w"
+                                                                srcset="{{ url_for('static', filename='img/icons_10.webp') }} 1000w , {{ url_for('static', filename='img/icons_10-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_10-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_10-768x768.png.webp') }} 768w"
                                                                 sizes="(max-width: 1000px) 100vw, 1000px"
                                                                 title="icons10png TechBlood TechBlood" /></noscript>
                                                     </figure>
@@ -2223,20 +1818,20 @@
                                                 <div class="elementor-image-box-wrapper">
                                                     <figure class="elementor-image-box-img"><img loading="lazy"
                                                             decoding="async" width="1000" height="1000"
-                                                            data-src="./img/icons_11.png"
+                                                            data-src="{{ url_for('static', filename='img/icons_11.png') }}"
                                                             class="attachment-full size-full wp-image-280 lazyloaded"
                                                             alt=""
-                                                            data-srcset="./img/icons_11.png 1000w, ./img/icons_11-300x300.png.webp 300w, ./img/icons_11-150x150.png.webp 150w, ./img/icons_11-768x768.png.webp 768w"
+                                                            data-srcset="{{ url_for('static', filename='img/icons_11.png') }} 1000w , {{ url_for('static', filename='img/icons_11-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_11-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_11-768x768.png.webp') }} 768w"
                                                             data-sizes="(max-width: 1000px) 100vw, 1000px"
                                                             title="icons11png TechBlood TechBlood"
-                                                            src="./img/icons_11.png"
+                                                            src="{{ url_for('static', filename='img/icons_11.png') }}"
                                                             style="--smush-placeholder-width: 1000px; --smush-placeholder-aspect-ratio: 1000/1000;"
                                                             sizes="(max-width: 1000px) 100vw, 1000px"
-                                                            srcset="./img/icons_11.png 1000w, ./img/icons_11-300x300.png.webp 300w, ./img/icons_11-150x150.png.webp 150w, ./img/icons_11-768x768.png.webp 768w"><noscript><img
+                                                            srcset="{{ url_for('static', filename='img/icons_11.png') }} 1000w , {{ url_for('static', filename='img/icons_11-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_11-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_11-768x768.png.webp') }} 768w"><noscript><img
                                                                 loading="lazy" decoding="async" width="1000"
-                                                                height="1000" src="./img/icons_11.png"
+                                                                height="1000" src="{{ url_for('static', filename='img/icons_11.png') }}"
                                                                 class="attachment-full size-full wp-image-280" alt=""
-                                                                srcset="./img/icons_11.png 1000w, ./img/icons_11-300x300.png.webp 300w, ./img/icons_11-150x150.png.webp 150w, ./img/icons_11-768x768.png.webp 768w"
+                                                                srcset="{{ url_for('static', filename='img/icons_11.png') }} 1000w , {{ url_for('static', filename='img/icons_11-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_11-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_11-768x768.png.webp') }} 768w"
                                                                 sizes="(max-width: 1000px) 100vw, 1000px"
                                                                 title="icons11png TechBlood TechBlood" /></noscript>
                                                     </figure>
@@ -2264,20 +1859,20 @@
                                                 <div class="elementor-image-box-wrapper">
                                                     <figure class="elementor-image-box-img"><img loading="lazy"
                                                             decoding="async" width="1000" height="1000"
-                                                            data-src="./img/icons_12.png"
+                                                            data-src="{{ url_for('static', filename='img/icons_12.png') }}"
                                                             class="attachment-full size-full wp-image-283 lazyloaded"
                                                             alt=""
-                                                            data-srcset="./img/icons_12.png 1000w, ./img/icons_12-300x300.png.webp 300w, ./img/icons_12-150x150.png.webp 150w, ./img/icons_12-768x768.png.webp 768w"
+                                                            data-srcset="{{ url_for('static', filename='img/icons_12.png') }} 1000w , {{ url_for('static', filename='img/icons_12-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_12-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_12-768x768.png.webp') }} 768w"
                                                             data-sizes="(max-width: 1000px) 100vw, 1000px"
                                                             title="icons12png TechBlood TechBlood"
-                                                            src="./img/icons_12.png"
+                                                            src="{{ url_for('static', filename='img/icons_12.png') }}"
                                                             style="--smush-placeholder-width: 1000px; --smush-placeholder-aspect-ratio: 1000/1000;"
                                                             sizes="(max-width: 1000px) 100vw, 1000px"
-                                                            srcset="./img/icons_12.png 1000w, ./img/icons_12-300x300.png.webp 300w, ./img/icons_12-150x150.png.webp 150w, ./img/icons_12-768x768.png.webp 768w"><noscript><img
+                                                            srcset="{{ url_for('static', filename='img/icons_12.png') }} 1000w , {{ url_for('static', filename='img/icons_12-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_12-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_12-768x768.png.webp') }} 768w"><noscript><img
                                                                 loading="lazy" decoding="async" width="1000"
-                                                                height="1000" src="./img/icons_12.png"
+                                                                height="1000" src="{{ url_for('static', filename='img/icons_12.png') }}"
                                                                 class="attachment-full size-full wp-image-283" alt=""
-                                                                srcset="./img/icons_12.png 1000w, ./img/icons_12-300x300.png.webp 300w, ./img/icons_12-150x150.png.webp 150w, ./img/icons_12-768x768.png.webp 768w"
+                                                                srcset="{{ url_for('static', filename='img/icons_12.png') }} 1000w , {{ url_for('static', filename='img/icons_12-300x300.png.webp') }} 300w , {{ url_for('static', filename='img/icons_12-150x150.png.webp') }} 150w , {{ url_for('static', filename='img/icons_12-768x768.png.webp') }} 768w"
                                                                 sizes="(max-width: 1000px) 100vw, 1000px"
                                                                 title="icons12png TechBlood TechBlood" /></noscript>
                                                     </figure>
@@ -2456,21 +2051,21 @@
                                                                         class="elementskit-commentor-image ekit-testimonial--avatar">
                                                                         <img loading="lazy" decoding="async" width="310"
                                                                             height="296"
-                                                                            data-src="/Captura-de-tela-2023-02-10-220229-1.png.webp"
+                                                                            data-src="{{ url_for('static', filename='/Captura-de-tela-2023-02-10-220229-1.png.webp') }}"
                                                                             class="attachment-full size-full ls-is-cached lazyloaded"
                                                                             alt=""
-                                                                            data-srcset="/Captura-de-tela-2023-02-10-220229-1.png.webp 310w, /Captura-de-tela-2023-02-10-220229-1-300x286.png.webp 300w"
+                                                                            data-srcset="{{ url_for('static', filename='/Captura-de-tela-2023-02-10-220229-1.png.webp') }} 310w , {{ url_for('static', filename='/Captura-de-tela-2023-02-10-220229-1-300x286.png.webp') }} 300w"
                                                                             data-sizes="(max-width: 310px) 100vw, 310px"
                                                                             title="Captura de tela 20230210 220229 TechBlood"
-                                                                            src="/Captura-de-tela-2023-02-10-220229-1.png.webp"
+                                                                            src="{{ url_for('static', filename='/Captura-de-tela-2023-02-10-220229-1.png.webp') }}"
                                                                             style="--smush-placeholder-width: 310px; --smush-placeholder-aspect-ratio: 310/296;"
                                                                             sizes="(max-width: 310px) 100vw, 310px"
-                                                                            srcset="/Captura-de-tela-2023-02-10-220229-1.png.webp 310w, /Captura-de-tela-2023-02-10-220229-1-300x286.png.webp 300w"><noscript><img
+                                                                            srcset="{{ url_for('static', filename='/Captura-de-tela-2023-02-10-220229-1.png.webp') }} 310w , {{ url_for('static', filename='/Captura-de-tela-2023-02-10-220229-1-300x286.png.webp') }} 300w"><noscript><img
                                                                                 loading="lazy" decoding="async"
                                                                                 width="310" height="296"
-                                                                                src="/Captura-de-tela-2023-02-10-220229-1.png.webp"
+                                                                                src="{{ url_for('static', filename='/Captura-de-tela-2023-02-10-220229-1.png.webp') }}"
                                                                                 class="attachment-full size-full" alt=""
-                                                                                srcset="/Captura-de-tela-2023-02-10-220229-1.png.webp 310w, /Captura-de-tela-2023-02-10-220229-1-300x286.png.webp 300w"
+                                                                                srcset="{{ url_for('static', filename='/Captura-de-tela-2023-02-10-220229-1.png.webp') }} 310w , {{ url_for('static', filename='/Captura-de-tela-2023-02-10-220229-1-300x286.png.webp') }} 300w"
                                                                                 sizes="(max-width: 310px) 100vw, 310px"
                                                                                 title="Captura de tela 20230210 220229 TechBlood" /></noscript>
                                                                     </div>
@@ -4107,100 +3702,100 @@
                     class="qlwapp-close" data-action="close">×</i> <span class="qlwapp-text">Fale com a gente</span>
             </a></div>
     </div>
-    <script src="./js/plugins/contact-form-7/includes/swv/js/index.js" id="swv-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/contact-form-7/includes/swv/js/index.js') }}" id="swv-js"></script>
 
-    <script src="./js/plugins/contact-form-7/includes/js/index.js" id="contact-form-7-js"></script>
-    <script src="./js/plugins/embedpress/assets/js/front.js" id="embedpress-front-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/contact-form-7/includes/js/index.js') }}" id="contact-form-7-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/embedpress/assets/js/front.js') }}" id="embedpress-front-js"></script>
 
-    <script src="./js/plugins/flying-pages/flying-pages.min.js" id="flying-pages-js" defer=""></script>
+    <script src="{{ url_for('static', filename='js/plugins/flying-pages/flying-pages.min.js') }}" id="flying-pages-js" defer=""></script>
 
-    <script src="./js/mediaelement/mediaelement-migrate.min.js" id="mediaelement-migrate-js"></script>
+    <script src="{{ url_for('static', filename='js/mediaelement/mediaelement-migrate.min.js') }}" id="mediaelement-migrate-js"></script>
 
-    <script src="./js/mediaelement/wp-mediaelement.min.js" id="wp-mediaelement-js"></script>
-    <script src="./js/plugins/elementor/assets/lib/jquery-numerator/jquery-numerator.min.js"
+    <script src="{{ url_for('static', filename='js/mediaelement/wp-mediaelement.min.js') }}" id="wp-mediaelement-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/elementor/assets/lib/jquery-numerator/jquery-numerator.min.js') }}"
         id="jquery-numerator-js"></script>
-    <script src="./js/plugins/metform/public/assets/lib/cute-alert/cute-alert.js" id="cute-alert-js"></script>
-    <script src="./js/themes/hello-elementor/assets/js/hello-frontend.min.js" id="hello-theme-frontend-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/metform/public/assets/lib/cute-alert/cute-alert.js') }}" id="cute-alert-js"></script>
+    <script src="{{ url_for('static', filename='js/themes/hello-elementor/assets/js/hello-frontend.min.js') }}" id="hello-theme-frontend-js"></script>
 
-    <script src="./js/plugins/elementskit-lite/widgets/init/assets/js/widget-scripts.js"
+    <script src="{{ url_for('static', filename='js/plugins/elementskit-lite/widgets/init/assets/js/widget-scripts.js') }}"
         id="ekit-widget-scripts-js"></script>
-    <script src="./js/plugins/elementskit-lite/widgets/init/assets/js/odometer.min.js" id="odometer-js"></script>
-    <script src="./js/plugins/elementskit/modules/parallax/assets/js/anime.js" id="animejs-js"></script>
-    <script defer="" src="./js/plugins/elementskit/modules/parallax/assets/js/parallax-frontend-scripts.js"
+    <script src="{{ url_for('static', filename='js/plugins/elementskit-lite/widgets/init/assets/js/odometer.min.js') }}" id="odometer-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/elementskit/modules/parallax/assets/js/anime.js') }}" id="animejs-js"></script>
+    <script defer="" src="{{ url_for('static', filename='js/plugins/elementskit/modules/parallax/assets/js/parallax-frontend-scripts.js') }}"
         id="elementskit-parallax-frontend-defer-js"></script>
-    <script src="./js/plugins/wp-whatsapp-chat/build/frontend/js/index.js" id="qlwapp-js"></script>
-    <script src="./js/plugins/wp-smushit/app/assets/js/smush-lazy-load.min.js" id="smush-lazy-load-js"></script>
-    <script src="./js/plugins/elementor/assets/js/webpack.runtime.min.js" id="elementor-webpack-runtime-js"></script>
-    <script src="./js/plugins/elementor/assets/js/frontend-modules.min.js" id="elementor-frontend-modules-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/wp-whatsapp-chat/build/frontend/js/index.js') }}" id="qlwapp-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/wp-smushit/app/assets/js/smush-lazy-load.min.js') }}" id="smush-lazy-load-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/elementor/assets/js/webpack.runtime.min.js') }}" id="elementor-webpack-runtime-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/elementor/assets/js/frontend-modules.min.js') }}" id="elementor-frontend-modules-js"></script>
 
-    <script src="./js/jquery/ui/core.min.js" id="jquery-ui-core-js"></script>
+    <script src="{{ url_for('static', filename='js/jquery/ui/core.min.js') }}" id="jquery-ui-core-js"></script>
 
-    <script src="./js/plugins/elementor/assets/js/frontend.min.js" id="elementor-frontend-js"></script><span
+    <script src="{{ url_for('static', filename='js/plugins/elementor/assets/js/frontend.min.js') }}" id="elementor-frontend-js"></script><span
         id="elementor-device-mode" class="elementor-screen-only"></span>
 
-    <script src="./js/plugins/jeg-elementor-kit/assets/js/elements/sticky-element.js"
+    <script src="{{ url_for('static', filename='js/plugins/jeg-elementor-kit/assets/js/elements/sticky-element.js') }}"
         id="jkit-sticky-element-js"></script>
     <script id="titan-main-js-before">const TITAN_DEMO_MODE = false;</script>
-    <script src="./js/plugins/titan-preloader/inc/assets/js/main.js" id="titan-main-js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/assets/js/de-column-clickable.js"
+    <script src="{{ url_for('static', filename='js/plugins/titan-preloader/inc/assets/js/main.js') }}" id="titan-main-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/assets/js/de-column-clickable.js') }}"
         id="de-column-clickable-elementor-js"></script>
 
-    <script type="text/javascript" src="./js/traffic-source-cookie/stable/traffic-source-cookie.min.js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/assets/js/lib/ResizeSensor.min.js"
+    <script type="text/javascript" src="{{ url_for('static', filename='js/traffic-source-cookie/stable/traffic-source-cookie.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/assets/js/lib/ResizeSensor.min.js') }}"
         id="de-resize-sensor-js"></script>
 
-    <script src="./js/plugins/dethemekit-for-elementor/assets/js/lib/jsticky/jquery.jsticky.js"
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/assets/js/lib/jsticky/jquery.jsticky.js') }}"
         id="jsticky-js"></script>
-    <script src="./js/plugins/elementor-pro/assets/js/webpack-pro.runtime.min.js"
+    <script src="{{ url_for('static', filename='js/plugins/elementor-pro/assets/js/webpack-pro.runtime.min.js') }}"
         id="elementor-pro-webpack-runtime-js"></script>
-    <script src="./js/plugins/elementor-pro/assets/js/frontend.min.js" id="elementor-pro-frontend-js"></script>
-    <script src="./js/plugins/elementor-pro/assets/js/elements-handlers.min.js" id="pro-elements-handlers-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/elementor-pro/assets/js/frontend.min.js') }}" id="elementor-pro-frontend-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/elementor-pro/assets/js/elements-handlers.min.js') }}" id="pro-elements-handlers-js"></script>
 
     <script
         id="de-sticky-frontend-js-extra">var DeStickySettings = { "elements_data": { "sections": [], "columns": [] } };</script>
-    <script src="./js/plugins/dethemekit-for-elementor/assets/js/de-sticky-frontend.js"
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/assets/js/de-sticky-frontend.js') }}"
         id="de-sticky-frontend-js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/assets/js/de-active-icon-box.js"
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/assets/js/de-active-icon-box.js') }}"
         id="de-active-icon-box-js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/assets/js/de-active-column.js" id="de-active-column-js"></script>
-    <script src="./js/plugins/elementskit-lite/widgets/init/assets/js/animate-circle.min.js"
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/assets/js/de-active-column.js') }}" id="de-active-column-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/elementskit-lite/widgets/init/assets/js/animate-circle.min.js') }}"
         id="animate-circle-js"></script>
-    <script src="./js/plugins/elementskit-lite/widgets/init/assets/js/elementor.js"
+    <script src="{{ url_for('static', filename='js/plugins/elementskit-lite/widgets/init/assets/js/elementor.js') }}"
         id="elementskit-elementor-js"></script>
 
-    <script src="./js/plugins/elementor/assets/lib/swiper/swiper.min.js" id="swiper-js"></script>
-    <script defer="" src="./js/plugins/elementskit/modules/sticky-content/assets/js/elementskit-sticky-content.js"
+    <script src="{{ url_for('static', filename='js/plugins/elementor/assets/lib/swiper/swiper.min.js') }}" id="swiper-js"></script>
+    <script defer="" src="{{ url_for('static', filename='js/plugins/elementskit/modules/sticky-content/assets/js/elementskit-sticky-content.js') }}"
         id="elementskit-sticky-content-script-init-defer-js"></script>
-    <script src="./js/plugins/elementskit/modules/pro-form-reset-button/assets/js/elementskit-reset-button.js"
+    <script src="{{ url_for('static', filename='js/plugins/elementskit/modules/pro-form-reset-button/assets/js/elementskit-reset-button.js') }}"
         id="elementskit-reset-button-js"></script>
-    <script defer="" src="./js/plugins/elementskit/modules/parallax/assets/js/parallax-admin-scripts.js"
+    <script defer="" src="{{ url_for('static', filename='js/plugins/elementskit/modules/parallax/assets/js/parallax-admin-scripts.js') }}"
         id="elementskit-parallax-admin-defer-js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/anime.min.js"
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/anime.min.js') }}"
         id="dethemekit-anime-js-js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/scrollMonitor.js"
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/scrollMonitor.js') }}"
         id="de-scroll-animation-scrollmonitor-js"></script>
-    <script src="./js/de_scroll_animation.preview.js" id="de-scroll-animation-preview-js-js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/intersectionobserver.js"
+    <script src="{{ url_for('static', filename='js/de_scroll_animation.preview.js') }}" id="de-scroll-animation-preview-js-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/intersectionobserver.js') }}"
         id="de-reveal-animation-intersection-observer-js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/letter/charming.min.js"
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/letter/charming.min.js') }}"
         id="de-reveal-letter-charming-js-js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/letter/lineMaker.js"
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/letter/lineMaker.js') }}"
         id="de-reveal-letter-lineMaker-js-js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/letter/imagesloaded.pkgd.min.js"
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/letter/imagesloaded.pkgd.min.js') }}"
         id="de-reveal-letter-imagesloaded-js-js"></script>
-    <script src="./js/letter/textfx.js" id="de-reveal-letter-textfx-js-js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/main.js"
+    <script src="{{ url_for('static', filename='js/letter/textfx.js') }}" id="de-reveal-letter-textfx-js-js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/main.js') }}"
         id="de-curtain-animation-main-js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/de_reveal_animation.preview.js"
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/de_reveal_animation.preview.js') }}"
         id="de-reveal-animation-preview-js"></script>
-    <script src="./js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/de_staggering/de_staggering.js"
+    <script src="{{ url_for('static', filename='js/plugins/dethemekit-for-elementor/includes/ext/sina/assets/js/de_staggering/de_staggering.js') }}"
         id="de-staggering-js"></script>
 
     <div style="position: fixed; top: -9999px; left: 0px; height: 100vh; width: 0px;"></div>
     <iframe style="width: 1px; height: 1px; position: absolute; top: -100px;" id="rd_tmgr"></iframe>
-    <script type="text/javascript" src="./js/rdstation-popups/bricks/rdstation-popup.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/rdstation-popups/bricks/rdstation-popup.min.js') }}"></script>
 
-    <script src="./js/plugins/elementor/assets/lib/swiper/v8/swiper.min.js"></script>
+    <script src="{{ url_for('static', filename='js/plugins/elementor/assets/lib/swiper/v8/swiper.min.js') }}"></script>
     <span role="status" aria-live="polite" class="select2-hidden-accessible"></span>
 
 
