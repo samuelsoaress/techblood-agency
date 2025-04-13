@@ -44,13 +44,13 @@ def flaskify_src_and_srcset(html: str) -> str:
     return html
 
 # Exemplo de uso:
-with open('index_flask.html', 'r', encoding='utf-8') as f:
+with open('social_media.html', 'r', encoding='utf-8') as f:
     original_html = f.read()
 
-#flask_ready_html = flaskify_static_paths(original_html)
-flask_ready_html = flaskify_src_and_srcset(original_html)
+flask_ready_html = flaskify_static_paths(original_html)
+flask_ready_html = flaskify_src_and_srcset(flask_ready_html)
 
-with open('index_flask2.html', 'w', encoding='utf-8') as f:
+with open('social_media2.html', 'w', encoding='utf-8') as f:
     f.write(flask_ready_html)
 
 print("Substituições feitas! Arquivo salvo como 'seuarquivo_flask.html'")
