@@ -1,51 +1,45 @@
-name: Deploy TechBlood
+name: CI TechBlood
 
 on:
   push:
-    branches: [˜main˜]
+    branches: ["main"]
 
 jobs:
-  deploy:
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the code
-        uses: actions/checkout@v4
+    - uses: actions/checkout@v3
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
 
-      - name: Install Docker
-        run: |
-          sudo apt-get update
-          sudo apt-get install docker.io -y
-          sudo systemctl start docker
-          sudo systemctl enable docker
+    - name: Configura Docker Compose
+      run: |
+        curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+        docker-compose --version
 
-      - name: Install Docker Compose
-        run: |
-          sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-          sudo chmod +x /usr/local/bin/docker-compose
+    - name: Roda Docker Compose
+      run: docker-compose up -d
 
-      - name: Roda Docker Compose
-        run: docker-compose up -d
+    - name: Deploy para EC2
+      env: 
+        PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
+        USER: ubuntu
+        HOST: 54.94.233.31
+      run: |
+        echo "PRIVATE_KEY" > deploy.pem
+        chmod 600 deploy.pem
 
-      - name: Deploy para EC2
-        env: 
-          PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
-          USER: ubuntu
-          HOST: 54.94.233.31
-        run: |
-          echo "PRIVATE_KEY" > deploy.pem
-          chmod 600 deploy.pem
+        docker save -o techblood-agency.tar techblood-agency
 
-          docker save -o techblood-agency.tar techblood-agency
+        scp -o StrictHostKeyChecking=no -i deploy_key.pem techblood-agency.tar $USER@HOST:/home/ubuntu
+        scp -o StrictHostKeyChecking=no -i deploy_key.pem docker-compose-prod.yaml $USER@HOST:/home/ubuntu
+        scp -o StrictHostKeyChecking=no -i deploy_key.pem script-deploy.sh $USER@HOST:/home/ubuntu
 
-          scp -o StrictHostKeyChecking=no -i deploy_key.pem techblood-agency.tar $USER@HOST:/home/ubuntu
-          scp -o StrictHostKeyChecking=no -i deploy_key.pem docker-compose-prod.yaml $USER@HOST:/home/ubuntu
-          scp -o StrictHostKeyChecking=no -i deploy_key.pem script-deploy.sh $USER@HOST:/home/ubuntu
-
-          ssh -i deploy_key.pem $USER@HOST "chmod +x script-deploy.sh && ./script-deploy.sh"
-        
+        ssh -i deploy_key.pem $USER@HOST "chmod +x script-deploy.sh && ./script-deploy.sh"
+      
