@@ -36,6 +36,11 @@ jobs:
         run: |
           docker-compose -f docker-compose.yml up --build -d  # A opção `-d` faz rodar em background
 
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       - name: Run tests
         run: |
           docker-compose exec web pytest  # Substitua `web` pelo nome do seu serviço no docker-compose
