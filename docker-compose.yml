@@ -4,6 +4,7 @@ services:
   web:
     build: .
     container_name: techblood-agency
+    image: techblood-agency
     ports:
       - "8080:8080"  # Porta pública (80) : Porta interna (8080)
     restart: always
