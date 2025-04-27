@@ -1,0 +1,46 @@
+name: Deploy TechBlood
+
+on:
+  push:
+    branches: [˜main˜]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install docker.io -y
+          sudo systemctl start docker
+          sudo systemctl enable docker
+
+      - name: Install Docker Compose
+        run: |
+          sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+
+      - name: Roda Docker Compose
+        run: docker-compose up -d
+
+      - name: Deploy para EC2
+        env: 
+          PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
+          USER: ubuntu
+          HOST: 54.94.233.31
+        run: |
+          echo "PRIVATE_KEY" > deploy.pem
+          chmod 600 deploy.pem
+
+          docker save -o techblood-agency.tar techblood-agency
+        
+        
