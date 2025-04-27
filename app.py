@@ -73,7 +73,7 @@ def branding():
 
 @app.route('/web_services')
 def web_services():
-    return  render_template('web_services.html')
+    return  render_template('branding.html')
 
 @app.route('/design_grafico')
 def design_grafico():
