@@ -1,4 +1,4 @@
-name: CI TechBlood
+name: Deploy TechBlood
 
 on:
   push:
