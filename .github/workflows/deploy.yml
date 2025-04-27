@@ -32,7 +32,7 @@ jobs:
         USER: ubuntu
         HOST: 54.94.233.31
       run: |
-        echo "PRIVATE_KEY" > deploy.pem
+        echo "$PRIVATE_KEY" > deploy.pem
         chmod 600 deploy.pem
 
         docker save -o techblood-agency.tar techblood-agency
