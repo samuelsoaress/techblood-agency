@@ -28,6 +28,7 @@ def submit_consultoria():
     cargo = request.form['cf_qual_e_o_seu_cargo_na_empresa']
     faturamento = request.form['cf_faturamento_mensal_da_empresa']
     
+    
     # Configurações do destinatário
     email_destinatario = [email,
                           'samuelsoares177778@gmail.com']
