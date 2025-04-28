@@ -1,7 +1,10 @@
 #! /bin/bash
 
-gunzip techblood-agency.tar.gz
-docker load -1 techblood-agency.tar
+echo "Descompactando imagem..."
+gunzip -f techblood-agency.tar.gz
+
+echo "Carregando imagem no Docker..."
+docker load -i techblood-agency.tar
 
 mv docker-compose-prod.yaml docker-compose.yaml
 
@@ -17,4 +20,5 @@ else
   echo "Todos os containers em execucao foram parados. "
 fi 
 
-docker compose up -d
+echo "Subindo containers"
+docker compose -f docker-compose-prod.yaml up -d
