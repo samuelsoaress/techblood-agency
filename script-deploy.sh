@@ -1,5 +1,7 @@
 #! /bin/bash
 
+chmod 600 /home/ubuntu/.envß
+
 if [ -f techblood-agency.tar ]; then
   rm techblood-agency.tar
 fi
