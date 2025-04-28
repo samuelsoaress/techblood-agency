@@ -3,14 +3,14 @@ services:
     restart: unless-stopped
     image: techblood-agency
     ports:
-      - "8080:8080"
+      - "80:80"
     env_file:
       - /home/ubuntu/.env
     networks:
       - vollmed
     environment:
       - FLASK_ENV=production
-    command: gunicorn -b 0.0.0.0:8080 app:app
+    command: gunicorn -b 0.0.0.0:80 app:app
 
 networks:
   vollmed:
