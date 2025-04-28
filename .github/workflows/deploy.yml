@@ -40,12 +40,12 @@ jobs:
         echo "Docker save concluído."
 
         echo "Transferindo arquivo para o servidor..."
-        scp -o StrictHostKeyChecking=no -i deploy_key.pem techblood-agency.tar.gz $USER@$HOST:/home/ubuntu
+        scp -o StrictHostKeyChecking=no -i deploy_key.pem techblood-agency.tar.gz $USER@$HOST:/home/ubuntu/
         echo "Transferência concluída."
 
-        scp -o StrictHostKeyChecking=no -i deploy_key.pem docker-compose-prod.yaml $USER@$HOST:/home/ubuntu
+        scp -o StrictHostKeyChecking=no -i deploy_key.pem docker-compose-prod.yaml $USER@$HOST:/home/ubuntu/
 
-        scp -o StrictHostKeyChecking=no -i deploy_key.pem script-deploy.sh $USER@$HOST:/home/ubuntu
+        scp -o StrictHostKeyChecking=no -i deploy_key.pem script-deploy.sh $USER@$HOST:/home/ubuntu/
 
         echo "Executando script de deploy no servidor..."
         ssh -i deploy_key.pem $USER@$HOST "chmod +x script-deploy.sh && ./script-deploy.sh"
