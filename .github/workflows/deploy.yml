@@ -36,11 +36,11 @@ jobs:
         chmod 600 deploy_key.pem
 
         echo "Iniciando docker save..."
-        docker save -o techblood-agency.tar techblood-agency
+        docker save techblood-agency | gzip > techblood-agency.tar.gz
         echo "Docker save concluído."
 
         echo "Transferindo arquivo para o servidor..."
-        scp -o StrictHostKeyChecking=no -i deploy_key.pem techblood-agency.tar $USER@$HOST:/home/ubuntu
+        scp -o StrictHostKeyChecking=no -i deploy_key.pem techblood-agency.tar.gz $USER@$HOST:/home/ubuntu
         echo "Transferência concluída."
 
         scp -o StrictHostKeyChecking=no -i deploy_key.pem docker-compose-prod.yaml $USER@$HOST:/home/ubuntu

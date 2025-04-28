@@ -1,6 +1,14 @@
 #! /bin/bash
 
 echo "Carregando imagem no Docker..."
+gzip -d techblood-agency.tar.gz
+
+if [ $? -ne 0 ]; then
+  echo "Erro ao descompactar o arquivo techblood-agency.tar.gz"
+  exit 1
+fi
+echo "Descompactado com sucesso"
+echo "Carregando imagem no Docker..."
 docker load -i techblood-agency.tar
 
 mv docker-compose-prod.yaml docker-compose.yaml
