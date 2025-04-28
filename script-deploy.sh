@@ -1,5 +1,9 @@
 #! /bin/bash
 
+if [ -f techblood-agency.tar ]; then
+  rm techblood-agency.tar
+fi
+gunzip techblood-agency.tar.gz
 echo "Carregando imagem no Docker..."
 gzip -d techblood-agency.tar.gz
 
