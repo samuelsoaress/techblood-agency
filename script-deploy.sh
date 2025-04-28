@@ -1,8 +1,5 @@
 #! /bin/bash
 
-echo "Descompactando imagem..."
-gunzip -f techblood-agency.tar.gz
-
 echo "Carregando imagem no Docker..."
 docker load -i techblood-agency.tar
 
@@ -21,4 +18,4 @@ else
 fi 
 
 echo "Subindo containers"
-docker compose -f docker-compose-prod.yaml up -d
+docker compose up -d
