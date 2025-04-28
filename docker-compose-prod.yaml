@@ -3,7 +3,7 @@ services:
     restart: unless-stopped
     image: techblood-agency
     ports:
-      - "80:80"
+      - "8080:8080"
     env_file:
       - /home/ubuntu/.env
     networks:
