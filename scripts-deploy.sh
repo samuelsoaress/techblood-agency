@@ -1,5 +1,6 @@
 #! /bin/bash
 
+gunzip techblood-agency.tar.gz
 docker load -1 techblood-agency.tar
 
 mv docker-compose-prod.yaml docker-compose.yaml
