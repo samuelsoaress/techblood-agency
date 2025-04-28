@@ -27,4 +27,8 @@ jobs:
 
     - name: Roda Docker Compose
       run: docker-compose up -d
-    
+
+    - name: SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@v5
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
