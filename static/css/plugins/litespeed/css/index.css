@@ -41082,7 +41082,6 @@ body.rtl .elementor-318 .elementor-element.elementor-element-129e647 .elementor-
 }
 
 .elementor-318 .elementor-element.elementor-element-2a78fcae>.elementor-element-populated>.elementor-background-overlay {
-    mix-blend-mode: color;
     transition: background .3s, border-radius .3s, opacity .3s
 }
 
@@ -78240,15 +78239,32 @@ div.twentytwenty-handle {
     position: relative
 }
 
-.elementskit-navbar-nav-default .elementskit-navbar-nav>li>a {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    text-decoration: none
+@media(max-width:1024px) {
+    .elementskit-navbar-nav-default .elementskit-navbar-nav>li>a {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        text-decoration: none
+    }
+
 }
+
+@media(min-width:1024px) {
+    .elementskit-navbar-nav-default .elementskit-navbar-nav>li>a {
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        text-decoration: none
+    }
+}
+
 
 .elementskit-navbar-nav-default .elementskit-navbar-nav>li>a:hover {
     text-decoration: none
